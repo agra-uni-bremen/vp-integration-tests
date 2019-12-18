@@ -15,6 +15,7 @@ cat > "${testdir}/gdb-cmds.in" <<-EOF
 	target remote :${GDB_DEBUG_PORT}
 	set confirm off
 	set logging file ${outfile}
+	set logging overwrite 1
 	set logging on
 EOF
 
