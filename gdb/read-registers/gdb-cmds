@@ -1,5 +1,5 @@
 set logging off
-break read-registers.S:38
+break read-registers.S:36
 continue
 set logging on
 info registers

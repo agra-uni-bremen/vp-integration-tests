@@ -33,6 +33,7 @@ _start:
 	li x29, 29
 	li x30, 30
 	li x31, 31
+	jal exit # breakpoint is set here
 
 # call exit (SYS_EXIT=93) with exit code 0 (argument in a0)
 exit:
