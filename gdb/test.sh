@@ -39,4 +39,7 @@ for test in *; do
 	fi
 
 	printf "OK.\n"
+
+	kill %1
+	wait
 done
