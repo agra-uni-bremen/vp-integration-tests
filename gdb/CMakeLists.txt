@@ -1,2 +1,6 @@
-add_subdirectory(connect-and-quit)
-add_subdirectory(read-registers)
+file(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/*")
+foreach(file ${files})
+	if(EXISTS "${file}/CMakeLists.txt")
+		add_subdirectory(${file})
+	endif()
+endforeach()
