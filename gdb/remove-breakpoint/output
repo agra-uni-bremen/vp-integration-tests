@@ -1,5 +1,3 @@
-Breakpoint 1 at 0x10088: file ./gdb/remove-breakpoint/remove-breakpoint.S, line 10.
-Breakpoint 2 at 0x1008c: file ./gdb/remove-breakpoint/remove-breakpoint.S, line 12.
 
 Breakpoint 1, twice () at ./gdb/remove-breakpoint/remove-breakpoint.S:10
 10	in ./gdb/remove-breakpoint/remove-breakpoint.S

@@ -1,5 +1,7 @@
+set logging off
 break remove-breakpoint.S:10
 break remove-breakpoint.S:12
+set logging on
 continue
 del 1
 continue
