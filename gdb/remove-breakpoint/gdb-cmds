@@ -1,0 +1,6 @@
+break remove-breakpoint.S:10
+break remove-breakpoint.S:12
+continue
+del 1
+continue
+quit
