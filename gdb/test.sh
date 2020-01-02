@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 GDB_DEBUG_PROG="${GDB_DEBUG_PROG:-gdb-multiarch}"
 GDB_DEBUG_PORT="${GDB_DEBUG_PORT:-2342}"
