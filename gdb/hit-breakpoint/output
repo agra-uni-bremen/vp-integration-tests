@@ -1,1 +1,4 @@
-Breakpoint 1 at 0x10078: file ./gdb/hit-breakpoint/hit-breakpoint.S, line 4.
+Breakpoint 1 at 0x1007c: file ./gdb/hit-breakpoint/hit-breakpoint.S, line 5.
+
+Breakpoint 1, _start () at ./gdb/hit-breakpoint/hit-breakpoint.S:5
+5	in ./gdb/hit-breakpoint/hit-breakpoint.S

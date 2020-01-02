@@ -1,6 +1,7 @@
 .global _start
 
 _start:
+	li t0, 42
 	jal exit # breakpoint is set here
 
 exit:

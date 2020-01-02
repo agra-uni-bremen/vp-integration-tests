@@ -1,2 +1,3 @@
-break hit-breakpoint.S:4
+break hit-breakpoint.S:5
+continue
 quit
