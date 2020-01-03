@@ -1,0 +1,9 @@
+
+Thread 1 hit Breakpoint 1, core0 () at ./gdb/mc-deterministic/mc-deterministic.S:17
+17	in ./gdb/mc-deterministic/mc-deterministic.S
+$1 = 1
+[Switching to Thread 2]
+
+Thread 2 hit Breakpoint 2, core1 () at ./gdb/mc-deterministic/mc-deterministic.S:21
+21	in ./gdb/mc-deterministic/mc-deterministic.S
+$2 = 2
