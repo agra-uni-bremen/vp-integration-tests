@@ -12,3 +12,4 @@ gdb/read-memory/read-memory
 gdb/read-registers/read-registers
 gdb/remove-breakpoint/remove-breakpoint
 gdb/write-memory/write-memory
+gdb/single-step/single-step
