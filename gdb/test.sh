@@ -10,7 +10,7 @@ testdir="${TMPDIR:-/tmp}/gdb-tests"
 outfile="${testdir}/gdb-log"
 
 mkdir -p "${testdir}"
-#trap "rm -rf '${testdir}' ; kill %1 2>/dev/null" INT EXIT
+trap "rm -rf '${testdir}' ; kill %1 2>/dev/null" INT EXIT
 
 cat > "${testdir}/gdb-cmds.in" <<-EOF
 	target remote :${GDB_DEBUG_PORT}
