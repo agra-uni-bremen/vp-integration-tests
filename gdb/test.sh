@@ -4,7 +4,7 @@ set -e
 GDB_DEBUG_PROG="${GDB_DEBUG_PROG:-gdb-multiarch}"
 GDB_DEBUG_PORT="${GDB_DEBUG_PORT:-2342}"
 
-RISCV_VP="tiny64-vp --debug-mode --debug-port "${GDB_DEBUG_PORT}" --intercept-syscalls"
+VPFLAGS="--debug-mode --debug-port "${GDB_DEBUG_PORT}" --intercept-syscalls"
 
 testdir="${TMPDIR:-/tmp}/gdb-tests"
 outfile="${testdir}/gdb-log"
@@ -26,8 +26,12 @@ for test in *; do
 	name=${test##*/}
 	printf "Running test case '%s': " "${name}"
 
-	# Killed by trap handler
-	(${RISCV_VP} "${test}/${name}" 1>"${testdir}/vp-out" 2>&1) &
+	if [ "${name%%-*}" = "mc" ]; then
+		vp="tiny64-mc"
+	else
+		vp="tiny64-vp"
+	fi
+	("${vp}" ${VPFLAGS} "${test}/${name}" 1>"${testdir}/vp-out" 2>&1) &
 
 	cat "${testdir}/gdb-cmds.in" "${test}/gdb-cmds" \
 		> "${testdir}/gdb-cmds"
