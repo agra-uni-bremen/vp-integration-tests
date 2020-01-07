@@ -1,9 +1,8 @@
 project(vp-integration-tests)
 cmake_minimum_required(VERSION 2.8.12)
 
-set(CMAKE_ASM_COMPILER "riscv64-linux-gnu-gcc")
-set(CMAKE_ASM_FLAGS "-c -fdebug-prefix-map=${CMAKE_SOURCE_DIR}=.. -g -march=rv64g -mabi=lp64d")
-set(CMAKE_EXE_LINKER_FLAGS "-nostdlib")
+# Generate debug information relative to gdb/
+set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} -g -fdebug-prefix-map=${CMAKE_SOURCE_DIR}=..")
 
 enable_language(C ASM)
 

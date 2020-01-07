@@ -5,7 +5,7 @@ Tests for peripherals and other utilities of the [riscv-vp][riscv-vp gitlab].
 ## Dependencies
 
 * riscv-vp binaries must be in `$PATH`
-* RISC-V compiler toolchain
+* clang with riscv-v support
 * GDB with RISC-V support
 * CMake
 
@@ -13,7 +13,7 @@ Tests for peripherals and other utilities of the [riscv-vp][riscv-vp gitlab].
 
 If all dependencies have been installed the tests can be invoked using:
 
-	$ cmake .
+	$ cmake -DCMAKE_TOOLCHAIN_FILE=toolchain/clang.cmake
 	$ make
 	$ ./test.sh
 
