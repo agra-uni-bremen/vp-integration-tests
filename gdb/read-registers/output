@@ -29,4 +29,3 @@ t3             0x1c	28
 t4             0x1d	29
 t5             0x1e	30
 t6             0x1f	31
-pc             0x100f4	0x100f4 <_start+124>
