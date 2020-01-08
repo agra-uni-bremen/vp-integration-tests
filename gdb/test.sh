@@ -10,11 +10,15 @@ testdir="${TMPDIR:-/tmp}/gdb-tests"
 outfile="${testdir}/gdb-log"
 
 mkdir -p "${testdir}"
-trap "rm -rf '${testdir}' ; kill %1 2>/dev/null" INT EXIT
+#trap "rm -rf '${testdir}' ; kill %1 2>/dev/null" INT EXIT
 
 cat > "${testdir}/gdb-cmds.in" <<-EOF
 	target remote :${GDB_DEBUG_PORT}
 	set confirm off
+
+	set height unlimited
+	set width unlimited
+
 	set logging file ${outfile}.in
 	set logging overwrite 1
 	set logging on
