@@ -15,7 +15,7 @@ trap "rm -rf '${testdir}' ; kill %1 2>/dev/null" INT EXIT
 cat > "${testdir}/gdb-cmds.in" <<-EOF
 	target remote :${GDB_DEBUG_PORT}
 	set confirm off
-	set logging file ${outfile}
+	set logging file ${outfile}.in
 	set logging overwrite 1
 	set logging on
 EOF
@@ -37,6 +37,13 @@ for test in *; do
 		> "${testdir}/gdb-cmds"
 	"${GDB_DEBUG_PROG}" -q -x "${testdir}/gdb-cmds" "${test}/${name}" \
 		1>"${testdir}/gdb-out" 2>&1
+
+	# Post process GDB log file to remove toolchain-specific output.
+	if [ -x "${test}/post-process.sh" ]; then
+		"${test}/post-process.sh" < "${outfile}.in" > "${outfile}"
+	else
+		cp "${outfile}.in" "${outfile}"
+	fi
 
 	if ! cmp -s "${outfile}" "${test}/output"; then
 		printf "FAIL: Output didn't match.\n\n"

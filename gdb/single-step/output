@@ -5,4 +5,3 @@ exit () at ../gdb/single-step/single-step.S:11
 11		li a7, 93
 
 Program received signal SIGQUIT, Quit.
-0x0000000000010094 in ?? ()
