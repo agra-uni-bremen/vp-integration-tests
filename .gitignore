@@ -15,3 +15,4 @@ gdb/write-memory/write-memory
 gdb/single-step/single-step
 
 sw/basic-c/basic-c
+sw/basic-asm/basic-asm
