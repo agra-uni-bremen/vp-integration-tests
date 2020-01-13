@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 
-VPFLAGS="--intercept-syscalls"
-
 testdir="${TMPDIR:-/tmp}/sw-tests"
 outfile="${testdir}/vp-out"
 errfile="${testdir}/vp-err"
@@ -21,7 +19,13 @@ for test in *; do
 		read -r vp < "${test}/vp"
 	fi
 
-	"${vp}" ${VPFLAGS} "${test}/${name}" \
+	if [ -s "${test}/opts" ]; then
+		set -- $(cat "${test}/opts")
+	else
+		set --
+	fi
+
+	"${vp}" "$@" "${test}/${name}" \
 		1>"${outfile}.in" 2>"${errfile}"
 
 	# Post process $outfile to remove toolchain-specific output.
