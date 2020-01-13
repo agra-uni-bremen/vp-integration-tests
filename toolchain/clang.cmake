@@ -1,9 +1,11 @@
 # CMake cross toolchain for riscv with clang
 # See: https://cmake.org/cmake/help/v3.6/manual/cmake-toolchains.7.html#cross-compiling-using-clang
 
-set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR riscv)
 
+# While clang itself does seem to support riscv64-unknown-elf,
+# the lld linker unfortunately does not.
 set(triple riscv64-linux-elf)
 
 set(CMAKE_C_COMPILER clang)
