@@ -16,3 +16,4 @@ gdb/single-step/single-step
 
 sw/basic-c/basic-c
 sw/basic-asm/basic-asm
+sw/printf/printf
