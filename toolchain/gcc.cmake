@@ -16,6 +16,3 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE NEVER)
 set(CMAKE_C_FLAGS "-march=rv64g -mabi=lp64d")
 set(CMAKE_CXX_FLAGS "-march=rv64g -mabi=lp64d")
 set(CMAKE_ASM_FLAGS "-march=rv64g -mabi=lp64d")
-
-# Do not link against any libc.
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -nostdlib")

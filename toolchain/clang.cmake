@@ -17,6 +17,3 @@ set(CMAKE_ASM_COMPILER_TARGET ${triple})
 
 # Use ldd as the default linker often does not support riscv.
 set(CMAKE_EXE_LINKER_FLAGS "-fuse-ld=lld")
-
-# Do not link against any libc.
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -nostdlib")
