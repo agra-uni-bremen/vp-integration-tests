@@ -6,7 +6,7 @@ outfile="${testdir}/vp-out"
 errfile="${testdir}/vp-err"
 
 mkdir -p "${testdir}"
-#trap "rm -rf '${testdir}'" INT EXIT
+trap "rm -rf '${testdir}'" INT EXIT
 
 for test in *; do
 	[ -e "${test}/output" ] || continue
