@@ -1,2 +1,2 @@
 #!/bin/sh
-exec grep '^a1'
+grep '^a1' | tr -d "[:blank:]"
