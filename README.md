@@ -36,15 +36,9 @@ Afterwards both toolchains have to be added to `$PATH`, e.g. using:
 
 ## Usage
 
-If all dependencies have been installed generate Makefiles using CMake:
+After all dependencies have been installed tests can be invoked using:
 
-	$ cmake -DCMAKE_TOOLCHAIN_FILE=toolchain/rv64.cmake
-
-After build all test files and invoke the tests using:
-
-
-	$ make
-	$ ./test.sh
+	./test.sh
 
 [riscv-vp gitlab]: https://gitlab.informatik.uni-bremen.de/riscv/riscv-vp
 [riscv-gnu-toolchain github]: https://github.com/riscv/riscv-gnu-toolchain
