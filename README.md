@@ -12,13 +12,12 @@ Tests for peripherals and other utilities of the [riscv-vp][riscv-vp gitlab].
 ### Notes on toolchain
 
 The tests are supposed to work with both RV32 and RV64. As such, testing
-requires a toolchain for both targets for the `riscv-unknown-elf`
-triple with newlib support.
-
-The easiest way to build these two toolchains is using the RISC-V
-[riscv-gnu-toolchain repository][riscv-gnu-toolchain github]. Currently,
-it seems to be necessary to compile desperate compilers for RV32 and
-RV64. This can be achieved by building a cross toolchain twice.
+requires a toolchain for both targets for the `riscv-unknown-elf` triple
+with newlib support. The easiest way to build these two toolchains is
+using the RISC-V [riscv-gnu-toolchain repository][riscv-gnu-toolchain
+github]. Currently, it seems to be necessary to compile desperate
+compilers for RV32 and RV64. This can be achieved by building a cross
+toolchain twice.
 
 For RV32:
 
