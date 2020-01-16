@@ -31,9 +31,9 @@ for test in *; do
 	printf "Running test case '%s': " "${name}"
 
 	if [ "${name%%-*}" = "mc" ]; then
-		vp="tiny64-mc"
+		vp="${TESTVP}-mc"
 	else
-		vp="tiny64-vp"
+		vp="${TESTVP}-vp"
 	fi
 	("${vp}" ${VPFLAGS} "${test}/${name}" 1>"${testdir}/vp-out" 2>&1) &
 

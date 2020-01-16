@@ -15,9 +15,9 @@ for test in *; do
 	printf "Running test case '%s': " "${name}"
 
 	if [ "${name%%-*}" = "mc" ]; then
-		vp="tiny64-mc"
+		vp="${TESTVP}-mc"
 	else
-		vp="tiny64-vp"
+		vp="${TESTVP}-vp"
 	fi
 
 	if [ -s "${test}/opts" ]; then
