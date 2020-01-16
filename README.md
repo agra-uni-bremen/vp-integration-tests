@@ -13,7 +13,7 @@ Tests for peripherals and other utilities of the [riscv-vp][riscv-vp gitlab].
 
 If all dependencies have been installed generate Makefiles using CMake:
 
-	$ cmake -DCMAKE_TOOLCHAIN_FILE=toolchain/gcc.cmake
+	$ cmake -DCMAKE_TOOLCHAIN_FILE=toolchain/rv64.cmake
 
 After build all test files and invoke the tests using:
 

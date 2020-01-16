@@ -1,4 +1,4 @@
-# CMake cross toolchain for riscv with gcc
+# CMake cross toolchain for RV64 with GCC
 # See: https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#cross-compiling-for-linux
 
 set(CMAKE_SYSTEM_NAME Generic)
