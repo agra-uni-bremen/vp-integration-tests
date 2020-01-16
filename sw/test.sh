@@ -14,9 +14,10 @@ for test in *; do
 	name=${test##*/}
 	printf "Running test case '%s': " "${name}"
 
-	vp=tiny64-vp
-	if [ -r "${test}/vp" ]; then
-		read -r vp < "${test}/vp"
+	if [ "${name%%-*}" = "mc" ]; then
+		vp="tiny64-mc"
+	else
+		vp="tiny64-vp"
 	fi
 
 	if [ -s "${test}/opts" ]; then
