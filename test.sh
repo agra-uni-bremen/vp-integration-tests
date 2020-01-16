@@ -18,7 +18,7 @@ build() {
 	git clean -fdX
 
 	# build cmake system for requested target
-	cmake -DCMAKE_TOOLCHAIN_FILE=toolchain/${1}.cmake
+	cmake -DCMAKE_TOOLCHAIN_FILE=toolchain/${1}.cmake .
 
 	# build all test programs for the target
 	make
@@ -40,9 +40,9 @@ tests() {
 ##
 
 export TESTVP="tiny32"
-build rv32
+build rv32 >/dev/null
 tests sw
 
 export TESTVP="tiny64"
-build rv64
+build rv64 >/dev/null
 tests sw gdb
