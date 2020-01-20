@@ -22,12 +22,12 @@ toolchain twice.
 For RV32:
 
 	./configure --prefix=/opt/rv32 --disable-gdb \
-		--disable-linux --with-arch=rv32imafdc
+		--disable-linux --with-arch=rv32imafdc --with-abi=ilp32
 
 For RV64:
 
 	./configure --prefix=/opt/rv64 --disable-gdb \
-		--disable-linux --with-arch=rv64imafdc
+		--disable-linux --with-arch=rv64imafdc --with-abi=lp64
 
 Afterwards both toolchains have to be added to `$PATH`, e.g. using:
 
