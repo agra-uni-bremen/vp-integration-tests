@@ -39,13 +39,13 @@ tests() {
 # Code
 ##
 
-printf "--- Testing RV32 ---\n"
+printf "### Testing RV32 ###\n"
 
 export TESTVP="tiny32"
 build rv32 >/dev/null
 tests sw
 
-printf "\n--- Testing RV64 ---\n"
+printf "\n### Testing RV64 ###\n"
 
 export TESTVP="tiny64"
 build rv64 >/dev/null
