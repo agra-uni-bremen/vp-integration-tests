@@ -10,7 +10,7 @@ testdir="${TMPDIR:-/tmp}/gdb-tests"
 outfile="${testdir}/gdb-log"
 
 mkdir -p "${testdir}"
-trap "rm -rf '${testdir}' ; kill %1 2>/dev/null || true" INT EXIT
+trap "rm -rf '${testdir}' ; kill $(jobs -p) 2>/dev/null || true" INT EXIT
 
 cat > "${testdir}/gdb-cmds.in" <<-EOF
 	target remote :${GDB_DEBUG_PORT}
@@ -57,6 +57,6 @@ for test in *; do
 
 	printf "OK.\n"
 
-	kill %1 2>/dev/null || true
+	kill $(jobs -p) 2>/dev/null || true
 	wait
 done
