@@ -57,6 +57,6 @@ for test in *; do
 
 	printf "OK.\n"
 
-	kill %1
+	kill %1 2>/dev/null || true
 	wait
 done
