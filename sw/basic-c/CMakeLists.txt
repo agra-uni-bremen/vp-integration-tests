@@ -1,2 +1,2 @@
 add_executable(basic-c bootstrap.S sum.c main.c)
-target_link_options(basic-c PRIVATE "-nostdlib")
+target_link_libraries(basic-c PRIVATE "-nostdlib")
