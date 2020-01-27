@@ -2,7 +2,8 @@ project(vp-integration-tests)
 cmake_minimum_required(VERSION 3.10.0)
 
 # Generate debug information relative to gdb/
-set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} -g -fdebug-prefix-map=${CMAKE_SOURCE_DIR}=..")
+string(APPEND CMAKE_ASM_FLAGS_INIT " -g")
+string(APPEND CMAKE_ASM_FLAGS_INIT " -fdebug-prefix-map=${CMAKE_SOURCE_DIR}=..")
 
 enable_language(C ASM)
 
