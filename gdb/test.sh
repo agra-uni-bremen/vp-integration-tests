@@ -40,7 +40,7 @@ for test in *; do
 	cat "${testdir}/gdb-cmds.in" "${test}/gdb-cmds" \
 		> "${testdir}/gdb-cmds"
 	"${GDB_DEBUG_PROG}" -q -x "${testdir}/gdb-cmds" "${test}/${name}" \
-		1>"${testdir}/gdb-out" 2>&1
+		1>"${testdir}/gdb-out" 2>&1 </dev/null
 
 	# Post process GDB log file to remove toolchain-specific output.
 	if [ -x "${test}/post-process.sh" ]; then
