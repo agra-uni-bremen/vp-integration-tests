@@ -6,6 +6,15 @@ GDB_DEBUG_PORT="${GDB_DEBUG_PORT:-2342}"
 
 VPFLAGS="--debug-mode --debug-port "${GDB_DEBUG_PORT}" --intercept-syscalls"
 
+gdb_fail() {
+	for file in "${testdir}/gdb-log" "${testdir}/gdb-out" "${testdir}/vp-out"; do
+		printf "\n### Contents of '%s' follow ###\n\n" "${file##*/}"
+		cat "${file}"
+	done
+
+	return 1
+}
+
 testdir="${TMPDIR:-/tmp}/gdb-tests"
 outfile="${testdir}/gdb-log"
 
@@ -51,8 +60,7 @@ for test in *; do
 
 	if ! cmp -s "${outfile}" "${test}/output"; then
 		printf "FAIL: Output didn't match.\n\n"
-		diff -u "${outfile}" "${test}/output"
-		exit 1
+		diff -u "${outfile}" "${test}/output" || gdb_fail
 	fi
 
 	printf "OK.\n"
