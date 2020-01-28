@@ -12,6 +12,7 @@ gdb/read-registers/read-registers
 gdb/remove-breakpoint/remove-breakpoint
 gdb/write-memory/write-memory
 gdb/single-step/single-step
+gdb/mc-dead-thread/mc-dead-thread
 
 sw/basic-c/basic-c
 sw/basic-asm/basic-asm
