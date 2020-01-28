@@ -1,9 +1,0 @@
-set logging off
-break mc-deterministic.S:16
-break mc-deterministic.S:20
-set logging on
-continue
-p $a0
-continue
-p $a0
-quit

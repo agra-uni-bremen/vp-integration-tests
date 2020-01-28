@@ -5,7 +5,6 @@ CMakeCache.txt
 
 gdb/connect-and-quit/connect-and-quit
 gdb/hit-breakpoint/hit-breakpoint
-gdb/mc-deterministic/mc-deterministic
 gdb/mc-info-threads/mc-info-threads
 gdb/mc-wfi-thread/mc-wfi-thread
 gdb/read-memory/read-memory
