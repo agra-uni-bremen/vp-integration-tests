@@ -15,6 +15,11 @@ gdb_fail() {
 	return 1
 }
 
+if ! command -v "${GDB_DEBUG_PROG}" >/dev/null 2>&1; then
+	echo "GDB debug program '${GDB_DEBUG_PROG}' is not installed." 2>&1
+	exit 1
+fi
+
 testdir="${TMPDIR:-/tmp}/gdb-tests"
 outfile="${testdir}/gdb-log"
 
