@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-testdir="${TMPDIR:-/tmp}/sw-tests"
+testdir="${TMPDIR:-/tmp}/integration-tests"
 outfile="${testdir}/vp-out"
 errfile="${testdir}/vp-err"
 
