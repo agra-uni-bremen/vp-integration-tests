@@ -33,11 +33,5 @@ Afterwards both toolchains have to be added to `$PATH`, e.g. using:
 
 	export PATH="$PATH:/opt/rv32/bin:/opt/rv64/bin"
 
-## Usage
-
-After all dependencies have been installed tests can be invoked using:
-
-	./test.sh
-
 [riscv-vp gitlab]: https://gitlab.informatik.uni-bremen.de/riscv/riscv-vp
 [riscv-gnu-toolchain github]: https://github.com/riscv/riscv-gnu-toolchain
