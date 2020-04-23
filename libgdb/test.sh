@@ -10,6 +10,7 @@ cmake -DCMAKE_BUILD_TYPE=Debug -DRISCV_VP_BASE="${RISCV_VP_BASE}" .
 make
 
 if ! command -v "valgrind" >/dev/null 2>&1; then
+	echo "WARNING: Running parser tests without valgrind, install valgrind!" 1>&2
 	exec ./run_tests.sh
 fi
 
