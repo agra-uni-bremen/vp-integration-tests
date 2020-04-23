@@ -4,7 +4,7 @@
 #include "suite.h"
 #include "util.h"
 
-#define SUITE "Suite first parser stage"
+#define SUITE "Suite for first parser stage"
 
 static void
 test_packet_ack(void)
