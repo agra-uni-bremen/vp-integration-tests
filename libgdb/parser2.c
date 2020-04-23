@@ -33,7 +33,6 @@ test_read_register_packet(void)
 	PT_ASSERT_STR_EQ(cmd->name, "p");
 	PT_ASSERT(cmd->type == GDB_ARG_INT);
 
-	printf("ival: %d\n", cmd->v.ival);
 	PT_ASSERT(cmd->v.ival == 0x20);
 
 	gdb_free_cmd(cmd);
