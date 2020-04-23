@@ -9,7 +9,7 @@
 #include "util.h"
 
 gdb_packet_t *
-parse_file(char *path)
+parse_file1(char *path)
 {
 	FILE *stream;
 	gdb_packet_t *pkt;
@@ -29,7 +29,7 @@ parse_file2(char *path)
 	gdb_packet_t *pkt;
 	gdb_command_t *cmd;
 
-	pkt = parse_file(path);
+	pkt = parse_file1(path);
 	cmd = gdb_parse_cmd(pkt);
 
 	free(pkt);
