@@ -32,6 +32,6 @@ parse_file2(char *path)
 	pkt = parse_file1(path);
 	cmd = gdb_parse_cmd(pkt);
 
-	free(pkt);
+	gdb_free_packet(pkt);
 	return cmd;
 }
