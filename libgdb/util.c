@@ -4,6 +4,7 @@
 #include <err.h>
 
 #include <libgdb/parser1.h>
+#include <libgdb/parser2.h>
 
 #include "util.h"
 
@@ -29,4 +30,17 @@ parse_file(char *path)
 	if (fclose(stream))
 		err(EXIT_FAILURE, "fclose failed for '%s'", path);
 	return pkt;
+}
+
+gdb_command_t *
+parse_file2(char *path)
+{
+	gdb_packet_t *pkt;
+	gdb_command_t *cmd;
+
+	pkt = parse_file(path);
+	cmd = gdb_parse_cmd(pkt);
+
+	free(pkt);
+	return cmd;
 }

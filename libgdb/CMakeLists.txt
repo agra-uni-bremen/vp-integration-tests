@@ -14,6 +14,7 @@ target_include_directories(ptest PUBLIC ptest/)
 add_executable(test
 	test.c
 	parser1.c
+	parser2.c
 	parser_util.c
 	util.c
 	util.h
