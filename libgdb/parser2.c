@@ -24,9 +24,25 @@ test_set_thread_packet(void)
 	gdb_free_cmd(cmd);
 }
 
+static void
+test_read_register_packet(void)
+{
+	gdb_command_t *cmd;
+
+	cmd = parse_file2("testdata/parser2/p.dat");
+	PT_ASSERT_STR_EQ(cmd->name, "p");
+	PT_ASSERT(cmd->type == GDB_ARG_INT);
+
+	printf("ival: %d\n", cmd->v.ival);
+	PT_ASSERT(cmd->v.ival == 0x20);
+
+	gdb_free_cmd(cmd);
+}
+
 void
 suite_parser2(void)
 {
 	pt_add_test(test_set_thread_packet, "Test parser for 'H' packet", SUITE);
+	pt_add_test(test_read_register_packet, "Test parser for 'P' packet", SUITE);
 	return;
 }
