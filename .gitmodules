@@ -1,0 +1,3 @@
+[submodule "libgdb/ptest"]
+	path = libgdb/ptest
+	url = https://github.com/orangeduck/ptest
