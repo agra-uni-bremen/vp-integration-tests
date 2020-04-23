@@ -38,10 +38,28 @@ test_read_register_packet(void)
 	gdb_free_cmd(cmd);
 }
 
+static void
+test_read_memory_packet(void)
+{
+	gdb_command_t *cmd;
+	gdb_memory_t *mem;
+
+	cmd = parse_cmd("m20400000,4");
+	PT_ASSERT_STR_EQ(cmd->name, "m");
+	PT_ASSERT(cmd->type == GDB_ARG_MEMORY);
+
+	mem = &cmd->v.mem;
+	PT_ASSERT(mem->addr == 0x20400000);
+	PT_ASSERT(mem->length == 4);
+
+	gdb_free_cmd(cmd);
+}
+
 void
 suite_parser2(void)
 {
 	pt_add_test(test_set_thread_packet, "Test parser for 'H' packet", SUITE);
 	pt_add_test(test_read_register_packet, "Test parser for 'P' packet", SUITE);
+	pt_add_test(test_read_memory_packet, "Test parser for 'm' packet", SUITE);
 	return;
 }
