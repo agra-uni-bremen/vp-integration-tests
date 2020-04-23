@@ -12,7 +12,7 @@ test_set_thread_packet(void)
 	gdb_command_t *cmd;
 	gdb_cmd_h_t *hcmd;
 
-	cmd = parse_file2("testdata/parser2/h.dat");
+	cmd = parse_cmd("Hc-1");
 	PT_ASSERT_STR_EQ(cmd->name, "H");
 	PT_ASSERT(cmd->type == GDB_ARG_H);
 
@@ -29,7 +29,7 @@ test_read_register_packet(void)
 {
 	gdb_command_t *cmd;
 
-	cmd = parse_file2("testdata/parser2/p.dat");
+	cmd = parse_cmd("p20");
 	PT_ASSERT_STR_EQ(cmd->name, "p");
 	PT_ASSERT(cmd->type == GDB_ARG_INT);
 

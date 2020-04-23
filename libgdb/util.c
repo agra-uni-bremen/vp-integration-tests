@@ -2,11 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <err.h>
+#include <string.h>
 
 #include <libgdb/parser1.h>
 #include <libgdb/parser2.h>
 
 #include "util.h"
+
+/* From internal.h from libgdb */
+extern int calc_csum(const char *);
 
 gdb_packet_t *
 parse_file1(char *path)
@@ -34,4 +38,27 @@ parse_file2(char *path)
 
 	gdb_free_packet(pkt);
 	return cmd;
+}
+
+static void
+make_packet(gdb_packet_t *pkt, char *data)
+{
+	int ret;
+	char strcsum[GDB_CSUM_LEN + 1]; /* +1 for snprintf nullbyte */
+
+	ret = snprintf(strcsum, sizeof(strcsum), "%.2x", calc_csum(data));
+	assert(ret == GDB_CSUM_LEN);
+
+	pkt->kind = GDB_KIND_PACKET;
+	pkt->data = data;
+	memcpy(&pkt->csum, strcsum, GDB_CSUM_LEN);
+}
+
+gdb_command_t *
+parse_cmd(char *data)
+{
+	gdb_packet_t pkt;
+
+	make_packet(&pkt, data);
+	return gdb_parse_cmd(&pkt);
 }
