@@ -83,7 +83,10 @@ test_runlen_decoding(void)
 		const char *in;
 		const char *out;
 	} tests[] = {
-		{ "0* ", "0000" },
+		{ "0* ", "0000" },         /* valid run-length encoding */
+		{ "230* 42", "23000042" }, /* valid run-length encoding */
+		{ "*", NULL },             /* no repeat character specified */
+		{ "0*\t", NULL },          /* negative repeat count */
 	};
 
 	for (size_t i = 0; i < ARRAY_LEN(tests); i++) {
