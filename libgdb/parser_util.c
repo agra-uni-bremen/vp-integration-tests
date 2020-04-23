@@ -11,7 +11,7 @@ extern bool gdb_is_valid(gdb_packet_t *);
 extern char *gdb_unescape(char *);
 extern char *gdb_decode_runlen(char *);
 
-#define SUITE "Suite first parser utilities"
+#define SUITE "Suite for parser utilities"
 
 static void
 test_checksum_calculation(void)
