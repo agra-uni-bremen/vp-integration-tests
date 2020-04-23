@@ -11,7 +11,7 @@ test_packet_ack(void)
 {
 	gdb_packet_t *pkt;
 
-	pkt = parse_file1("testdata/parser1/ack.dat");
+	pkt = parse_pkt("testdata/parser1/ack.dat");
 
 	PT_ASSERT(pkt->kind == GDB_KIND_ACK);
 	PT_ASSERT(pkt->data == NULL);
@@ -26,7 +26,7 @@ test_packet_nack(void)
 {
 	gdb_packet_t *pkt;
 
-	pkt = parse_file1("testdata/parser1/nack.dat");
+	pkt = parse_pkt("testdata/parser1/nack.dat");
 
 	PT_ASSERT(pkt->kind == GDB_KIND_NACK);
 	PT_ASSERT(pkt->data == NULL);
@@ -41,7 +41,7 @@ test_packet_simple(void)
 {
 	gdb_packet_t *pkt;
 
-	pkt = parse_file1("testdata/parser1/simple.dat");
+	pkt = parse_pkt("testdata/parser1/simple.dat");
 
 	PT_ASSERT(pkt->kind == GDB_KIND_PACKET);
 	PT_ASSERT_STR_EQ(pkt->data, "qTStatus");
@@ -56,7 +56,7 @@ test_packet_notify(void)
 {
 	gdb_packet_t *pkt;
 
-	pkt = parse_file1("testdata/parser1/notify.dat");
+	pkt = parse_pkt("testdata/parser1/notify.dat");
 
 	PT_ASSERT(pkt->kind == GDB_KIND_NOTIFY);
 	PT_ASSERT_STR_EQ(pkt->data, "?");
