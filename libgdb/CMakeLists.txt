@@ -20,5 +20,5 @@ add_executable(test
 	suite.h)
 target_link_libraries(test gdb ptest)
 set_property(TARGET test PROPERTY C_STANDARD 99)
-target_compile_options(test PRIVATE -ggdb -Werror
+target_compile_options(test PRIVATE -Werror
 	-Wpedantic -Wall -Wextra -Wmissing-prototypes)

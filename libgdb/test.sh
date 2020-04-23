@@ -6,7 +6,7 @@ if [ ! -d "${RISCV_VP_BASE}" ]; then
 	exit 1
 fi
 
-cmake -DRISCV_VP_BASE="${RISCV_VP_BASE}" .
+cmake -DCMAKE_BUILD_TYPE=Debug -DRISCV_VP_BASE="${RISCV_VP_BASE}" .
 make
 
 if ! command -v "valgrind" >/dev/null 2>&1; then
