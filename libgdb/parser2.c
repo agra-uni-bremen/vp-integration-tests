@@ -76,6 +76,23 @@ test_write_memory_packet(void)
 	gdb_free_cmd(cmd);
 }
 
+static void
+test_liveness_check_packet(void)
+{
+	gdb_command_t *cmd;
+	gdb_thread_t *thr;
+
+	cmd = parse_cmd("Tp-1.0");
+	PT_ASSERT_STR_EQ(cmd->name, "T");
+	PT_ASSERT(cmd->type == GDB_ARG_THREAD);
+
+	thr = &cmd->v.tval;
+	PT_ASSERT(thr->pid == GDB_THREAD_ALL);
+	PT_ASSERT(thr->tid == GDB_THREAD_ANY);
+
+	gdb_free_cmd(cmd);
+}
+
 void
 suite_parser2(void)
 {
@@ -83,5 +100,6 @@ suite_parser2(void)
 	pt_add_test(test_read_register_packet, "Test parser for 'P' packet", SUITE);
 	pt_add_test(test_read_memory_packet, "Test parser for 'm' packet", SUITE);
 	pt_add_test(test_write_memory_packet, "Test parser for 'M' packet", SUITE);
+	pt_add_test(test_liveness_check_packet, "Test parser for 'T' packet", SUITE);
 	return;
 }
