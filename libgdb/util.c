@@ -8,23 +8,14 @@
 
 #include "util.h"
 
-FILE *
-xfopen(char *path)
-{
-	FILE *stream;
-
-	if (!(stream = fopen(path, "r")))
-		err(EXIT_FAILURE, "fopen failed for '%s'", path);
-	return stream;
-}
-
 gdb_packet_t *
 parse_file(char *path)
 {
 	FILE *stream;
 	gdb_packet_t *pkt;
 
-	stream = xfopen(path);
+	if (!(stream = fopen(path, "r")))
+		err(EXIT_FAILURE, "fopen failed for '%s'", path);
 	pkt = gdb_parse_pkt(stream);
 
 	if (fclose(stream))
