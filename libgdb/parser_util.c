@@ -82,13 +82,20 @@ test_runlen_decoding(void)
 	struct {
 		const char *in;
 		const char *out;
-	} tests = {
-		{ "0*", "0000" },
+	} tests[] = {
+		{ "0* ", "0000" },
 	};
 
 	for (size_t i = 0; i < ARRAY_LEN(tests); i++) {
-		char *decoded = gdb_decode_runlen(tests[i].in);
-		PT_ASSERT_STR_EQ(decoded, tests[i].out);
+		char *decoded = gdb_decode_runlen((char *)tests[i].in);
+		const char *expected = tests[i].out;
+
+		if (!decoded || !expected) {
+			PT_ASSERT(decoded == expected);
+			continue;
+		}
+
+		PT_ASSERT_STR_EQ(decoded, expected);
 		free(decoded);
 	}
 }
