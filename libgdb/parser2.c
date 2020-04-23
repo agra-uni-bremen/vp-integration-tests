@@ -55,11 +55,33 @@ test_read_memory_packet(void)
 	gdb_free_cmd(cmd);
 }
 
+static void
+test_write_memory_packet(void)
+{
+	gdb_command_t *cmd;
+	gdb_memory_write_t *mem;
+	gdb_memory_t *loc;
+
+	cmd = parse_cmd("M20400000,4:ffffffff");
+	PT_ASSERT_STR_EQ(cmd->name, "M");
+	PT_ASSERT(cmd->type == GDB_ARG_MEMORYW);
+
+	mem = &cmd->v.memw;
+	PT_ASSERT_STR_EQ(mem->data, "ffffffff");
+
+	loc = &mem->location;
+	PT_ASSERT(loc->addr == 0x20400000);
+	PT_ASSERT(loc->length == 4);
+
+	gdb_free_cmd(cmd);
+}
+
 void
 suite_parser2(void)
 {
 	pt_add_test(test_set_thread_packet, "Test parser for 'H' packet", SUITE);
 	pt_add_test(test_read_register_packet, "Test parser for 'P' packet", SUITE);
 	pt_add_test(test_read_memory_packet, "Test parser for 'm' packet", SUITE);
+	pt_add_test(test_write_memory_packet, "Test parser for 'M' packet", SUITE);
 	return;
 }
