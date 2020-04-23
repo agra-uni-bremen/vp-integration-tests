@@ -8,4 +8,22 @@ fi
 
 cmake -DRISCV_VP_BASE="${RISCV_VP_BASE}" .
 make
-./run_tests.sh
+
+if ! command -v "valgrind" >/dev/null 2>&1; then
+	exec ./run_tests.sh
+fi
+
+logfile="${TMPDIR:-/tmp}/libgdb-valgrind"
+trap "rm -f '${logfile}' 2>/dev/null" INT EXIT
+
+memleak=42
+valgrind --exit-on-first-error=yes --error-exitcode=${memleak} \
+	--leak-check=full --show-leak-kinds=all \
+	--log-file="${logfile}" ./run_tests.sh || \
+	(
+		if [ $? -eq ${memleak} ]; then
+			printf "\n  ===== Valgrind error report =====\n\n"
+			cat "${logfile}" | sed 's/^/    /'
+			exit ${memleak}
+		fi
+	)
