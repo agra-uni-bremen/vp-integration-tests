@@ -93,6 +93,24 @@ test_liveness_check_packet(void)
 	gdb_free_cmd(cmd);
 }
 
+static void
+test_insert_soft_breakpoint_packet(void)
+{
+	gdb_command_t *cmd;
+	gdb_breakpoint_t *brk;
+
+	cmd = parse_cmd("Z0,20400326,2");
+	PT_ASSERT_STR_EQ(cmd->name, "Z");
+	PT_ASSERT(cmd->type == GDB_ARG_BREAK);
+
+	brk = &cmd->v.bval;
+	PT_ASSERT(brk->type == GDB_ZKIND_SOFT);
+	PT_ASSERT(brk->address == 0x20400326);
+	PT_ASSERT(brk->kind == 2);
+
+	gdb_free_cmd(cmd);
+}
+
 void
 suite_parser2(void)
 {
@@ -101,5 +119,6 @@ suite_parser2(void)
 	pt_add_test(test_read_memory_packet, "Test parser for 'm' packet", SUITE);
 	pt_add_test(test_write_memory_packet, "Test parser for 'M' packet", SUITE);
 	pt_add_test(test_liveness_check_packet, "Test parser for 'T' packet", SUITE);
+	pt_add_test(test_insert_soft_breakpoint_packet, "Test parser for 'Z' packet", SUITE);
 	return;
 }
