@@ -3,6 +3,10 @@ Makefile
 CMakeFiles
 CMakeCache.txt
 
+libgdb/build/
+libgdb/libptest.a
+libgdb/libgdb-tests
+
 gdb/connect-and-quit/connect-and-quit
 gdb/hit-breakpoint/hit-breakpoint
 gdb/mc-info-threads/mc-info-threads
