@@ -8,7 +8,8 @@ int main(void) {
 	/* copy result to register $a1 */
 	asm volatile ("addi a1, %0, 0"
 	              : /* no output operands */
-	              : "r" (result));
+	              : "r" (result)
+	              : "a1");
 
 	return 0;
 }

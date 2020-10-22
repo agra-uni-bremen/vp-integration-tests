@@ -7,7 +7,8 @@ int main(unsigned hart_id) {
 	unsigned id = hart_id + 1;
 	asm volatile ("addi a1, %0, 0"
 	              : /* no output operands */
-	              : "r" (id));
+	              : "r" (id)
+	              : "a1");
 
 	return 0;
 }
