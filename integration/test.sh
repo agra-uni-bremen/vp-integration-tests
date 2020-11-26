@@ -16,8 +16,10 @@ build() {
 
 export TESTVP="tiny32"
 build rv32 >/dev/null
-./run_tests.sh | sed 's/^/[RV32] /'
+out="$(./run_tests.sh)"
+printf "%s\n" "${out}" | sed 's/^/[RV32] /'
 
 export TESTVP="tiny64"
 build rv64 >/dev/null
-./run_tests.sh | sed 's/^/[RV64] /'
+out="$(./run_tests.sh)"
+printf "%s\n" "${out}" | sed 's/^/[RV64] /'
