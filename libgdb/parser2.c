@@ -111,6 +111,33 @@ test_insert_soft_breakpoint_packet(void)
 	gdb_free_cmd(cmd);
 }
 
+static void
+test_vcont_multiple_actions(void)
+{
+	gdb_command_t *cmd;
+	gdb_vcont_t *vcont;
+
+	cmd = parse_cmd("vCont;s:1;c");
+	PT_ASSERT_STR_EQ(cmd->name, "vCont");
+	PT_ASSERT(cmd->type == GDB_ARG_VCONT);
+
+	vcont = cmd->v.vval;
+	PT_ASSERT(vcont->action == 's');
+	PT_ASSERT(vcont->sig == -1);
+	PT_ASSERT(vcont->thread.pid == GDB_THREAD_UNSET);
+	PT_ASSERT(vcont->thread.tid == 1);
+	PT_ASSERT(vcont->next != NULL);
+
+	vcont = cmd->v.vval->next;
+	PT_ASSERT(vcont->action == 'c');
+	PT_ASSERT(vcont->sig == -1);
+	PT_ASSERT(vcont->thread.pid == GDB_THREAD_UNSET);
+	PT_ASSERT(vcont->thread.tid == GDB_THREAD_ALL);
+	PT_ASSERT(vcont->next == NULL);
+
+	gdb_free_cmd(cmd);
+}
+
 void
 suite_parser2(void)
 {
@@ -120,5 +147,6 @@ suite_parser2(void)
 	pt_add_test(test_write_memory_packet, "Test parser for 'M' packet", SUITE);
 	pt_add_test(test_liveness_check_packet, "Test parser for 'T' packet", SUITE);
 	pt_add_test(test_insert_soft_breakpoint_packet, "Test parser for 'Z' packet", SUITE);
+	pt_add_test(test_vcont_multiple_actions, "Test parser for multiple 'vCont' actions", SUITE);
 	return;
 }
