@@ -13,6 +13,6 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE NEVER)
 
 # Set Architecture and ABI flags
-set(CMAKE_C_FLAGS_INIT "-march=rv64imac -mabi=lp64")
-set(CMAKE_CXX_FLAGS_INIT "-march=rv64imac -mabi=lp64")
-set(CMAKE_ASM_FLAGS_INIT "-march=rv64imac -mabi=lp64")
+set(CMAKE_C_FLAGS_INIT "-misa-spec=2.2 -march=rv64imac -mabi=lp64")
+set(CMAKE_CXX_FLAGS_INIT "-misa-spec=2.2 -march=rv64imac -mabi=lp64")
+set(CMAKE_ASM_FLAGS_INIT "-misa-spec=2.2 -march=rv64imac -mabi=lp64")
