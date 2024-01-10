@@ -1,5 +1,5 @@
-project(gdb-tests)
 cmake_minimum_required(VERSION 3.10.0)
+project(gdb-tests)
 
 # gdb test cases do not require a libc
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -nostdlib")

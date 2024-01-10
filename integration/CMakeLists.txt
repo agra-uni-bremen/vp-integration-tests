@@ -1,5 +1,5 @@
-project(integration-tests)
 cmake_minimum_required(VERSION 3.10.0)
+project(integration-tests)
 
 enable_language(C ASM)
 

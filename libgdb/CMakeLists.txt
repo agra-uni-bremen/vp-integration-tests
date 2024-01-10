@@ -1,5 +1,5 @@
-project(libgdb-tests)
 cmake_minimum_required(VERSION 3.10.0)
+project(libgdb-tests)
 
 add_subdirectory("${RISCV_VP_BASE}/vp/src/core/common/gdb-mc/libgdb" ./build)
 target_compile_definitions(gdb PRIVATE GDB_PARSER_DEBUG)
