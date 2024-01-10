@@ -2,6 +2,7 @@
 
 Thread 2 hit Breakpoint 1, exit () at ../gdb/mc-dead-thread/mc-dead-thread.S:13
 13		ecall               # breakpoint is set here
+[Thread 2 exited]
 
 Thread 2 received signal SIGQUIT, Quit.
   Id   Target Id         Frame 
